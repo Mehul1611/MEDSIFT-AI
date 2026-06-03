@@ -38,23 +38,14 @@ Preserve medication names, doses, units, routes, frequencies, dates, lab values,
 """
 
 
-
 USER_PROMPT = """
-
 ## Document name: 
-
 {document_name}
 
-
-
 ## Page number: 
-
 {page_number}
 
-
-
 ## Total pages: 
-
 {total_pages}
 
 """
