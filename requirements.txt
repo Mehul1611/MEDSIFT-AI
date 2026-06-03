@@ -1,0 +1,8 @@
+langchain==0.3.24
+langchain-ollama==0.3.3
+PyPDF2==3.0.1
+pymupdf==1.27.2.3
+tiktoken==0.13.0
+tenacity==9.1.4
+pydantic==2.13.4
+httpx==0.28.1
