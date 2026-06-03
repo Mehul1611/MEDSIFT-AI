@@ -5,7 +5,7 @@ from llmcore.discharge_agent.patient_state import PatientState
 patients: list[PatientState] = [
     {
         'patient_id': 'patient-001',
-        'source_notes_dir': 'sample_data\patient 2 (1).pdf',
+        'source_notes_dir': 'sample_data',
     }
 ]
 

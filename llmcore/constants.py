@@ -7,7 +7,7 @@ class LLMConstants:
     OLLAMA_BASE_URL = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
     OUTPUT_BASE_DIR = 'output/discharge_summaries'
 
-    PREPROCESSOR_MODEL = 'llama3.2-vision'
+    PREPROCESSOR_MODEL = 'llava'
     PLANNING_AGENT_MODEL = 'llama3.2'
     WRITER_AGENT_MODEL = 'llama3.2'
 
