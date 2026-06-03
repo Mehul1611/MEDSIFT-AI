@@ -24,6 +24,7 @@ class DocumentContextBuilder:
         if not base64_image:
             print(f'Empty image for {document_name} page {page_number} — cannot summarise')
             raise ValueError(f'Empty image returned for {document_name} page {page_number}')
+        
         summary = self.summary_agent.summarise_page(
             document_name=document_name,
             page_number=page_number,
@@ -74,7 +75,13 @@ class DocumentContextBuilder:
         page_summaries: List[Tuple[str, int, str]] = []
         with ThreadPoolExecutor(max_workers=2) as executor:
             futures = {
-                executor.submit(self._process_single_page, pdf_path, doc_name, page_num, total_pages): (doc_name, page_num)
+                executor.submit(
+                    self._process_single_page, 
+                    pdf_path, 
+                    doc_name, 
+                    page_num, 
+                    total_pages
+                ): (doc_name, page_num)
                 for pdf_path, doc_name, page_num, total_pages in jobs
             }
             for future in as_completed(futures):
@@ -93,17 +100,13 @@ class DocumentContextBuilder:
             raise FileNotFoundError(f'No PDF files found in {self.notes_dir} for patient {self.patient_id}')
 
         available_documents = [Path(p).name for p in pdf_files]
-        print(
-            f'Building document context from {len(pdf_files)} documents '
-            f'for patient {self.patient_id}: {available_documents}'
-        )
+        print(f'''Building document context from {len(pdf_files)} documents 
+            for patient {self.patient_id}: {available_documents}''')
 
         jobs = self._collect_pdf_page_jobs(pdf_files)
         page_summaries = self._process_pages_parallel(jobs)
         document_context = self._format_document_context(page_summaries)
 
-        print(
-            f'Document context complete for patient {self.patient_id} — '
-            f'{len(page_summaries)} pages processed'
-        )
+        print(f'''Document context complete for patient {self.patient_id}
+            {len(page_summaries)} pages processed''')
         return (document_context, available_documents)

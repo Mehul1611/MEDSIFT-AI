@@ -6,7 +6,6 @@ from typing import List
 
 
 class PdfPageReader:
-
     def list_pdf_files(self, notes_dir: str) -> List[str]:
         try:
             notes_path = Path(notes_dir)
