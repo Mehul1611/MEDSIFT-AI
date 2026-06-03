@@ -1,0 +1,26 @@
+# environment
+.env
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# outputs
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# dump/
+sample_data/
+dump/
+DISCHARGE_SUMMARY_AGENT.md
