@@ -1,6 +1,7 @@
 # environment
 .env
 .venv/
+venv312/
 venv/
 env/
 __pycache__/
@@ -23,4 +24,5 @@ Thumbs.db
 # dump/
 sample_data/
 dump/
+test.py
 DISCHARGE_SUMMARY_AGENT.md
